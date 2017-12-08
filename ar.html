@@ -1,0 +1,28 @@
+<script src="aframe.min.js"></script>
+<script src="aframe-ar.js"></script>
+<script>
+        	window.addEventListener('message', function(event) { 
+                        //document.getElementById("entity").collada-model="url("+event.data+")";
+                        var e = document.querySelector('#entity');
+                        //e.setAttribute("collada-model", 'url('+event.data+')');
+                        e.setAttribute("obj-model", 'obj:url('+event.data+'.obj);mtl:url('+event.data+'.mtl)');
+                        //document.getElementById("mtl").src=event.data+'.mtl';
+                        //alert('Inside ar.html outside if: '+document.getElementById("entity").collada-model);
+    
+});
+        
+</script>        
+<body style="margin : 0px; overflow: hidden;">
+        <a-scene embedded arjs='sourceType: webcam;'>
+               <a-assets>
+                        <a-asset-item id="obj" src="resources/couch.obj"></a-asset-item>
+                        <a-asset-item id="mtl" src="resources/couch.mtl"></a-asset-item>
+                </a-assets> 
+                <!-- Using the asset management system. -->
+                <a-marker-camera preset="hiro"></a-marker-camera>
+                <!-- a-entity id="entity" collada-model="url(resources/DesignChair1.dae)" scale="0.5 0.5 0.5"></a-entity -->
+                <a-entity id="entity" obj-model="obj:url(scale="0.5 0.5 0.5"></a-entity>
+                <!-- <a-image src="resources/couch4.png"></a-image> -->
+                <a-marker-camera preset="hiro"></a-marker-camera> 
+        </a-scene>
+</body>
